@@ -22,6 +22,7 @@ function GamePlayView({state, dispatch}) {
 
 
     const checkClickedCard = (id) => {
+        console.log(flipped, id);
         return flipped.includes(id);
     };
 
@@ -52,12 +53,15 @@ function GamePlayView({state, dispatch}) {
     };
 
     const handleCardClick = (id) => {
-        dispatch({
-            type: "SET_DISABLE",
-            payload: {
-                val: true
-            }
-        });
+        if(!checkClickedCard(id)){
+            dispatch({
+                type: "SET_DISABLE",
+                payload: {
+                    val: true
+                }
+            });
+        }
+
         if (flipped.length === 0) {
             dispatch({
                 type: "FLIP_CARD",
