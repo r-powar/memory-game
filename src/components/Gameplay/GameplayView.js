@@ -22,7 +22,6 @@ function GamePlayView({state, dispatch}) {
 
 
     const checkClickedCard = (id) => {
-        console.log(flipped, id);
         return flipped.includes(id);
     };
 
