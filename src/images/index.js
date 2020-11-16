@@ -11,7 +11,6 @@ import Horse from './memoryHorseCardFront@2x.png';
 import Pig from './memoryPigCardFront@2x.png';
 import Spider from './memorySpiderCardFront@2x.png';
 
-const defaultCard = backCard;
 const gameBackButton = backButtonPic;
 
 let images = [
@@ -70,7 +69,6 @@ let images = [
 
 
 export {
-    defaultCard,
     gameBackButton,
     images
 }

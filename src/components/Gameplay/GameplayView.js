@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import Board from "./Board";
-import {initializeGird} from "../../utils/utilities";
+import {initializeGird, findInCards} from "../../utils/utilities";
+import BackButton from "./BackButton";
 
 
 function GameplayView({state, dispatch}) {
@@ -24,15 +25,6 @@ function GameplayView({state, dispatch}) {
         return flipped.includes(id);
     };
 
-    const findInCards = (id, arr) => {
-        for(let i = 0; i < arr.length; i++){
-            for(let j = 0; j < arr[i].length; j++){
-                if(arr[i][j].id === id){
-                    return arr[i][j];
-                }
-            }
-        }
-    };
 
     const checkMatch = (id) => {
         const clicked = findInCards(id, cards);
@@ -42,13 +34,21 @@ function GameplayView({state, dispatch}) {
     };
 
     const resetCards = () => {
-      dispatch({
-          type: "RESET",
-          payload:{
-              disable: false,
-              flipped: []
-          }
-      })
+        dispatch({
+            type: "RESET",
+            payload: {
+                disable: false,
+                flipped: []
+            }
+        })
+    };
+
+    const handlePreviousClick = (e) => {
+        e.preventDefault();
+        dispatch({
+            type: "END_GAME",
+            payload:{}
+        })
     };
 
     const handleCardClick = (id) => {
@@ -72,37 +72,41 @@ function GameplayView({state, dispatch}) {
                     val: false
                 }
             })
-        }else{
-            if(checkClickedCard(id)) return;
+        } else {
+            if (checkClickedCard(id)) return;
             dispatch({
                 type: "FLIP_CARD",
-                payload:{
+                payload: {
                     val: [flipped[0], id]
                 }
             });
-            if(checkMatch(id)){
+            if (checkMatch(id)) {
                 dispatch({
                     type: "SOLVED",
-                    payload:{
+                    payload: {
                         val: [flipped[0], id]
                     }
                 });
                 resetCards()
-            }else{
+            } else {
                 setTimeout(resetCards, 1000)
             }
         }
     };
 
     return (
-        <div className="container" style={{display: 'grid'}}>
-            <Board cards={cards}
-                   flipped={flipped}
-                   handleClick={handleCardClick}
-                   gameDisabled={gameDisabled}
-                   solved={solved}
-            />
-        </div>
+        <>
+            <BackButton handleClick={handlePreviousClick}/>
+            <div className="container" style={{display: 'grid'}}>
+                <Board cards={cards}
+                       flipped={flipped}
+                       handleClick={handleCardClick}
+                       gameDisabled={gameDisabled}
+                       solved={solved}
+                />
+            </div>
+        </>
+
     );
 }
 

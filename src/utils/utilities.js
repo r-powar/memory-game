@@ -25,3 +25,13 @@ export const initializeGird = (rows, cols) => {
     const trimmedItems = items.slice(0, totalSize).sort(() => Math.random() - 0.5);
     return matrixGrid(trimmedItems, cols, []);
 };
+
+export const findInCards = (id, arr) => {
+    for(let i = 0; i < arr.length; i++){
+        for(let j = 0; j < arr[i].length; j++){
+            if(arr[i][j].id === id){
+                return arr[i][j];
+            }
+        }
+    }
+};

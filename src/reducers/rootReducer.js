@@ -79,6 +79,11 @@ const rootReducer = (state = initialState, action) => {
             isLobbyView: !state.isLobbyView
         }
     }
+
+    if(action.type === 'END_GAME'){
+        return initialState
+    }
+
     return state;
 };
 
