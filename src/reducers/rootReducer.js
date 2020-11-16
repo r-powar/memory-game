@@ -61,12 +61,20 @@ const rootReducer = (state = initialState, action) => {
         }
     }
 
+    if(action.type === 'SET_DISABLE'){
+        const {val} = action.payload;
+        return {
+            ...state,
+            gameDisabled: val
+        }
+    }
+
     if(action.type === 'RESET'){
-        const {flipped, disabled} = action.payload;
+        const {flipped, disable} = action.payload;
         return {
             ...state,
             flipped,
-            gameDisabled: disabled
+            gameDisabled: disable
         }
     }
 

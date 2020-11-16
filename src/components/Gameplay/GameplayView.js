@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import Board from "./Board";
 import {initializeGird, findInCards} from "../../utils/utilities";
 import BackButton from "./BackButton";
-
+import PropTypes from 'prop-types';
 
 function GamePlayView({state, dispatch}) {
     const {
@@ -74,12 +74,14 @@ function GamePlayView({state, dispatch}) {
             })
         } else {
             if (checkClickedCard(id)) return;
+
             dispatch({
                 type: "FLIP_CARD",
                 payload: {
                     val: [flipped[0], id]
                 }
             });
+
             if (checkMatch(id)) {
                 dispatch({
                     type: "SOLVED",
@@ -91,13 +93,16 @@ function GamePlayView({state, dispatch}) {
             } else {
                 setTimeout(resetCards, 1000)
             }
+
         }
     };
 
     return (
         <>
-            <BackButton handleClick={handlePreviousClick}/>
-            <div className="container" style={{display: 'grid'}}>
+            <div style={{ textAlign: 'left', padding: '10px'}}>
+                <BackButton handleClick={handlePreviousClick}/>
+            </div>
+            <div style={{display: 'grid', rowGap: '5px'}} >
                 <Board cards={cards}
                        flipped={flipped}
                        handleClick={handleCardClick}
@@ -109,5 +114,10 @@ function GamePlayView({state, dispatch}) {
 
     );
 }
+
+GamePlayView.propTypes = {
+    state: PropTypes.object,
+    dispatch: PropTypes.func,
+};
 
 export default GamePlayView;
