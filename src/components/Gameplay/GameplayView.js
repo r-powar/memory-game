@@ -4,7 +4,7 @@ import {initializeGird, findInCards} from "../../utils/utilities";
 import BackButton from "./BackButton";
 
 
-function GameplayView({state, dispatch}) {
+function GamePlayView({state, dispatch}) {
     const {
         cards, gameRowSize, gameColSize,
         flipped, gameDisabled, solved
@@ -110,4 +110,4 @@ function GameplayView({state, dispatch}) {
     );
 }
 
-export default GameplayView;
+export default GamePlayView;
