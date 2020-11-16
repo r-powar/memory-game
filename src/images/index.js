@@ -18,52 +18,52 @@ let images = [
     {
         link: Bat,
         name: 'bat',
-        matchFound: false,
+        back: backCard,
     },
     {
         link: Cat,
         name: 'cat',
-        matchFound: false,
+        back: backCard,
     },
     {
         link: Cow,
         name: 'cow',
-        matchFound: false,
+        back: backCard,
     },
     {
         link: Dragon,
         name: 'dragon',
-        matchFound: false,
+        back: backCard,
     },
     {
         link: GarbageMan,
         name: 'garbageMan',
-        matchFound: false,
+        back: backCard,
     },
     {
         link: GhostDog,
         name: 'ghostDog',
-        matchFound: false,
+        back: backCard,
     },
     {
         link: Hen,
         name: 'hen',
-        matchFound: false,
+        back: backCard,
     },
     {
         link: Horse,
         name: 'horse',
-        matchFound: false,
+        back: backCard,
     },
     {
         link: Pig,
         name: 'pig',
-        matchFound: false,
+        back: backCard,
     },
     {
         link: Spider,
         name: 'spider',
-        matchFound: false,
+        back: backCard,
     }
 ];
 
